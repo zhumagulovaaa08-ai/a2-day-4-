@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English with Mixlass</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f3e9;
+        }
+        .container {
+            max-width: 900px;
+        }
+        .question-box {
+            background-color: #ffffff;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+        }
+        .correct {
+            color: #10B981;
+        }
+        .incorrect {
+            color: #EF4444;
+        }
+        .unanswered {
+            color: #F97316;
+        }
+        .input-text {
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+            transition: border-color 0.3s;
+            width: 100%;
+        }
+        .input-text:focus {
+            outline: none;
+            border-color: #F97316;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .feedback-message {
+            margin-top: 0.5rem;
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center py-10 px-4">
+    <div class="container mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-10 fade-in">
+            <h1 class="text-4xl font-bold text-[#F97316] mb-2">English with Mixlass</h1>
+            <p class="text-lg text-gray-700">LEARN. SHARE. CONNECT</p>
+        </div>
+
+        <!-- Task 1: Match the speakers with the jobs -->
+        <div id="task1" class="question-box mb-8 fade-in">
+            <h2 class="text-2xl font-bold mb-4">VOCABULARY</h2>
+            <p class="text-xl font-bold mb-4">1 Match the speakers (1-8) with the jobs (a-h).</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Speakers -->
+                <div class="space-y-4">
+                    <div class="bg-gray-200 p-4 rounded-lg flex items-center relative flex-wrap">
+                        <span class="font-bold mr-2">1</span>
+                        <p class="text-sm">I start work at 4 a.m. so the office looks good when people arrive at 8 a.m.</p>
+                        <input type="text" class="input-text w-12 ml-auto text-center" data-answer="b">
+                        <div class="feedback-message w-full mt-2"></div>
+                    </div>
+                    <div class="bg-gray-200 p-4 rounded-lg flex items-center relative flex-wrap">
+                        <span class="font-bold mr-2">2</span>
+                        <p class="text-sm">My group and I perform on stage. We often work with singers in theatres.</p>
+                        <input type="text" class="input-text w-12 ml-auto text-center" data-answer="c">
+                        <div class="feedback-message w-full mt-2"></div>
+                    </div>
+                    <div class="bg-gray-200 p-4 rounded-lg flex items-center relative flex-wrap">
+                        <span class="font-bold mr-2">3</span>
+                        <p class="text-sm">My manager couldn’t do her job without me. I plan everything!</p>
+                        <input type="text" class="input-text w-12 ml-auto text-center" data-answer="f">
+                        <div class="feedback-message w-full mt-2"></div>
+                    </div>
+                    <div class="bg-gray-200 p-4 rounded-lg flex items-center relative flex-wrap">
+                        <span class="font-bold mr-2">4</span>
+                        <p class="text-sm">I love looking after animals and helping them to get better when they are ill.</p>
+                        <input type="text" class="input-text w-12 ml-auto text-center" data-answer="h">
+                        <div class="feedback-message w-full mt-2"></div>
+                    </div>
+                    <div class="bg-gray-200 p-4 rounded-lg flex items-center relative flex-wrap">
+                        <span class="font-bold mr-2">5</span>
+                        <p class="text-sm">My company makes clothes. I work on one of the machines.</p>
+                        <input type="text" class="input-text w-12 ml-auto text-center" data-answer="e">
+                        <div class="feedback-message w-full mt-2"></div>
+                    </div>
+                    <div class="bg-gray-200 p-4 rounded-lg flex items-center relative flex-wrap">
+                        <span class="font-bold mr-2">6</span>
+                        <p class="text-sm">Sometimes, I write a story in a few weeks. Sometimes, in a few years!</p>
+                        <input type="text" class="input-text w-12 ml-auto text-center" data-answer="a">
+                        <div class="feedback-message w-full mt-2"></div>
+                    </div>
+                    <div class="bg-gray-200 p-4 rounded-lg flex items-center relative flex-wrap">
+                        <span class="font-bold mr-2">7</span>
+                        <p class="text-sm">Teeth are important to people. Everyone wants a nice smile.</p>
+                        <input type="text" class="input-text w-12 ml-auto text-center" data-answer="d">
+                        <div class="feedback-message w-full mt-2"></div>
+                    </div>
+                    <div class="bg-gray-200 p-4 rounded-lg flex items-center relative flex-wrap">
+                        <span class="font-bold mr-2">8</span>
+                        <p class="text-sm">I love showing people around my city and explaining its history.</p>
+                        <input type="text" class="input-text w-12 ml-auto text-center" data-answer="g">
+                        <div class="feedback-message w-full mt-2"></div>
+                    </div>
+                </div>
+                <!-- Jobs -->
+                <div class="space-y-2">
+                    <p class="text-sm"><span class="font-bold">a</span> author</p>
+                    <p class="text-sm"><span class="font-bold">b</span> cleaner</p>
+                    <p class="text-sm"><span class="font-bold">c</span> dancer</p>
+                    <p class="text-sm"><span class="font-bold">d</span> dentist</p>
+                    <p class="text-sm"><span class="font-bold">e</span> factory worker</p>
+                    <p class="text-sm"><span class="font-bold">f</span> PA</p>
+                    <p class="text-sm"><span class="font-bold">g</span> tour guide</p>
+                    <p class="text-sm"><span class="font-bold">h</span> vet</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Task 2A: Choose the correct word or phrase -->
+        <div id="task2a" class="question-box mb-8 fade-in">
+            <h2 class="text-2xl font-bold mb-4">2A Choose the correct word or phrase to complete the sentences.</h2>
+            <div class="space-y-6">
+                <div class="flex items-start flex-wrap">
+                    <span class="font-bold mr-2">1</span>
+                    <div>
+                        <p>It's the chef's <span class="relative inline-block">
+                            <input type="text" class="input-text w-32" data-answer="job">
+                        </span> to manage the kitchen and make sure the food is good.</p>
+                        <div class="feedback-message mt-2"></div>
+                        <div class="text-xs text-gray-500 mt-1">
+                            <span class="font-bold">a</span> career
+                            <span class="font-bold ml-4">b</span> job
+                            <span class="font-bold ml-4">c</span> work
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-start flex-wrap">
+                    <span class="font-bold mr-2">2</span>
+                    <div>
+                        <p>I decided to take the job and signed the <span class="relative inline-block">
+                            <input type="text" class="input-text w-32" data-answer="contract">
+                        </span>.</p>
+                        <div class="feedback-message mt-2"></div>
+                        <div class="text-xs text-gray-500 mt-1">
+                            <span class="font-bold">a</span> contract
+                            <span class="font-bold ml-4">b</span> pay
+                            <span class="font-bold ml-4">c</span> interview
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-start flex-wrap">
+                    <span class="font-bold mr-2">3</span>
+                    <div>
+                        <p>I work in the technology <span class="relative inline-block">
+                            <input type="text" class="input-text w-32" data-answer="industry">
+                        </span>.</p>
+                        <div class="feedback-message mt-2"></div>
+                        <div class="text-xs text-gray-500 mt-1">
+                            <span class="font-bold">a</span> job
+                            <span class="font-bold ml-4">b</span> industry
+                            <span class="font-bold ml-4">c</span> career
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-start flex-wrap">
+                    <span class="font-bold mr-2">4</span>
+                    <div>
+                        <p>I need more time to <span class="relative inline-block">
+                            <input type="text" class="input-text w-32" data-answer="develop">
+                        </span> my own business.</p>
+                        <div class="feedback-message mt-2"></div>
+                        <div class="text-xs text-gray-500 mt-1">
+                            <span class="font-bold">a</span> do
+                            <span class="font-bold ml-4">b</span> sign
+                            <span class="font-bold ml-4">c</span> develop
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-start flex-wrap">
+                    <span class="font-bold mr-2">5</span>
+                    <div>
+                        <p>The <span class="relative inline-block">
+                            <input type="text" class="input-text w-32" data-answer="pay">
+                        </span> here is 20% higher than at other similar companies.</p>
+                        <div class="feedback-message mt-2"></div>
+                        <div class="text-xs text-gray-500 mt-1">
+                            <span class="font-bold">a</span> pay
+                            <span class="font-bold ml-4">b</span> interview
+                            <span class="font-bold ml-4">c</span> industry
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-start flex-wrap">
+                    <span class="font-bold mr-2">6</span>
+                    <div>
+                        <p>I was happy when the manager of the company <span class="relative inline-block">
+                            <input type="text" class="input-text w-32" data-answer="offered">
+                        </span> me the job.</p>
+                        <div class="feedback-message mt-2"></div>
+                        <div class="text-xs text-gray-500 mt-1">
+                            <span class="font-bold">a</span> signed
+                            <span class="font-bold ml-4">b</span> developed
+                            <span class="font-bold ml-4">c</span> offered
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Task B: Complete the text with the words in the box -->
+        <div id="taskb" class="question-box mb-8 fade-in">
+            <h2 class="text-2xl font-bold mb-4">B Complete the text with the words in the box.</h2>
+            <div class="bg-gray-200 p-4 rounded-lg mb-4 flex flex-wrap gap-2">
+                <span class="bg-gray-300 rounded-full px-3 py-1 text-sm font-semibold">business</span>
+                <span class="bg-gray-300 rounded-full px-3 py-1 text-sm font-semibold">career</span>
+                <span class="bg-gray-300 rounded-full px-3 py-1 text-sm font-semibold">contract</span>
+                <span class="bg-gray-300 rounded-full px-3 py-1 text-sm font-semibold">industry</span>
+                <span class="bg-gray-300 rounded-full px-3 py-1 text-sm font-semibold">interviews</span>
+                <span class="bg-gray-300 rounded-full px-3 py-1 text-sm font-semibold">job</span>
+                <span class="bg-gray-300 rounded-full px-3 py-1 text-sm font-semibold">offered</span>
+                <span class="bg-gray-300 rounded-full px-3 py-1 text-sm font-semibold">pay</span>
+            </div>
+            <p>I'm a scientist in the food <span class="relative inline-block">
+                <input type="text" class="input-text w-32" data-answer="industry">
+            </span>. My <span class="relative inline-block">
+                <input type="text" class="input-text w-32" data-answer="career">
+            </span> started after I left university. I had <span class="relative inline-block">
+                <input type="text" class="input-text w-32" data-answer="interviews">
+            </span> with six different food and drinks companies. Five of them didn't want me. One of them <span class="relative inline-block">
+                <input type="text" class="input-text w-32" data-answer="offered">
+            </span> me a job. It was a small company and so the <span class="relative inline-block">
+                <input type="text" class="input-text w-32" data-answer="pay">
+            </span> wasn't very high, but I knew I could learn there. I signed the <span class="relative inline-block">
+                <input type="text" class="input-text w-32" data-answer="contract">
+            </span> and started a week later. I was a tester so my <span class="relative inline-block">
+                <input type="text" class="input-text w-32" data-answer="job">
+            </span> was to test the fruit juices. I was there for ten years. Then I left and spent time developing my own science <span class="relative inline-block">
+                <input type="text" class="input-text w-32" data-answer="business">
+            </span>. Ten people work for me now.</p>
+        </div>
+        <div class="feedback-container"></div>
+
+        <!-- Control Buttons -->
+        <div class="flex justify-center space-x-4 mt-8">
+            <button id="check-btn" class="bg-[#F97316] text-white font-bold py-2 px-6 rounded-full shadow-lg hover:bg-orange-600 transition duration-300">Проверить</button>
+            <button id="reset-btn" class="bg-gray-500 text-white font-bold py-2 px-6 rounded-full shadow-lg hover:bg-gray-600 transition duration-300">Сбросить</button>
+        </div>
+
+    </div>
+
+    <script>
+        const checkBtn = document.getElementById('check-btn');
+        const resetBtn = document.getElementById('reset-btn');
+        const inputs = document.querySelectorAll('input[type="text"]');
+        
+        const explanations = {
+            'a': 'An author writes books or stories.',
+            'b': 'A cleaner cleans offices or homes.',
+            'c': 'A dancer performs on stage.',
+            'd': 'A dentist takes care of teeth.',
+            'e': 'A factory worker operates machines in a factory.',
+            'f': 'A PA (Personal Assistant) plans and organizes for their manager.',
+            'g': 'A tour guide shows people around a city.',
+            'h': 'A vet looks after sick animals.',
+            'job': 'The correct choice is "job" because "job" is a specific task or a piece of work, while "work" is a general concept and "career" refers to a long-term profession.',
+            'contract': 'The correct choice is "contract", because you sign a formal agreement when starting a new job.',
+            'industry': 'The correct choice is "industry", because it is a category of economic activity.',
+            'develop': 'The correct choice is "develop", as it refers to growing or improving a business over time.',
+            'pay': 'The correct choice is "pay", because it is the money you receive for your work.',
+            'offered': 'The correct choice is "offered", because a manager offers you a job.',
+            'industry_b': 'I\'m a scientist in the food **industry** - "industry" is a sector or a business area.',
+            'career_b': 'My **career** started... - A "career" is a long-term progression in a profession.',
+            'interviews_b': 'I had **interviews** with six different... - "Interviews" are formal meetings to assess a candidate for a job.',
+            'offered_b': 'One of them **offered** me a job - To "offer" a job is to propose it to someone.',
+            'pay_b': 'the **pay** wasn\'t very high - "Pay" refers to the salary or wage.',
+            'contract_b': 'I signed the **contract** - A "contract" is a legal agreement.',
+            'job_b': 'my **job** was to test the fruit juices - "Job" is a specific task or role.',
+            'business_b': 'developing my own science **business** - A "business" is a commercial enterprise.'
+        };
+
+        const normalizeAnswer = (text) => {
+            if (!text) return '';
+            return text.toLowerCase().replace(/[\s\p{P}]/gu, '');
+        };
+
+        checkBtn.addEventListener('click', () => {
+            let correctCount = 0;
+            let totalQuestions = inputs.length;
+
+            inputs.forEach(input => {
+                const userAnswer = normalizeAnswer(input.value);
+                const correctAnswer = normalizeAnswer(input.dataset.answer);
+                const isCorrect = userAnswer === correctAnswer;
+                
+                // Find or create the feedback message div
+                let feedbackDiv = input.closest('.feedback-message') || input.nextElementSibling;
+                if (!feedbackDiv || !feedbackDiv.classList.contains('feedback-message')) {
+                    feedbackDiv = document.createElement('div');
+                    feedbackDiv.className = 'feedback-message w-full mt-2';
+                    input.parentNode.appendChild(feedbackDiv);
+                }
+
+                // Reset styles and feedback
+                input.classList.remove('correct', 'incorrect');
+                feedbackDiv.style.display = 'none';
+
+                if (isCorrect) {
+                    input.classList.add('correct');
+                    correctCount++;
+                } else {
+                    input.classList.add('incorrect');
+                    const explanationKey = input.dataset.answer;
+                    const explanation = explanations[explanationKey] || 'No explanation available.';
+                    feedbackDiv.innerHTML = `<span class="text-red-500 font-bold">Неверно. Правильный ответ: ${input.dataset.answer}</span><br>${explanation}`;
+                    feedbackDiv.style.display = 'block';
+                }
+            });
+            
+            // Show overall result message
+            let resultMessage = `У вас ${correctCount} из ${totalQuestions} правильных ответов.`;
+            if (correctCount === totalQuestions) {
+                resultMessage = 'Поздравляем! Все ответы верны!';
+            }
+            
+            // Using a simple alert-like message for summary
+            setTimeout(() => {
+                alert(resultMessage);
+            }, 100);
+        });
+
+        resetBtn.addEventListener('click', () => {
+            inputs.forEach(input => {
+                input.value = '';
+                input.classList.remove('correct', 'incorrect');
+                const parentDiv = input.closest('.flex-wrap') || input.closest('p');
+                const feedbackDiv = parentDiv ? parentDiv.querySelector('.feedback-message') : null;
+                if (feedbackDiv) {
+                    feedbackDiv.style.display = 'none';
+                    feedbackDiv.textContent = '';
+                }
+            });
+            // Show a reset message
+            alert("Задание сброшено.");
+        });
+
+    </script>
+</body>
+</html>
